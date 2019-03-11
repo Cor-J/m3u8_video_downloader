@@ -15,9 +15,13 @@
     
     
     video_name_1
+    
     http://example1.m3u8
+    
     ---------------START------------------
+    
     video_name_2
+    
     http://example2.m3u8
     
 -  之后,进入本python文件的根目录下，用命令行运行下面的命令。
