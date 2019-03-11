@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='m3u8_video_downloader',
-    version=1.1,
+    version=1.2,
     description=(
         'Download video from m3u8 url'
     ),
@@ -21,6 +21,8 @@ setup(
     packages=find_packages(),
     platforms=["all"],
     url='https://github.com/synsis/m3u8_video_downloader',
+    entry_points={
+        'console_scripts': ['m3u8_video_downloader = m3u8_video_downloader.m3u8_video_downloader:main']},
     classifiers=[
         'Development Status :: 4 - Beta',
         'Operating System :: OS Independent',
@@ -36,6 +38,5 @@ setup(
     python_requires='>=3',
     install_requires=[
         'requests',
-        'fire'
     ],
 )

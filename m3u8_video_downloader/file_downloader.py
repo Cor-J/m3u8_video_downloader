@@ -35,11 +35,11 @@ def ts_download(video_list, total_name, save_path):
 
     print("{} is merging...".format(total_name).center(60, "-"))
     name = merge(file_list, path)
-    os.system("ren " + name[0] + " " + total_name + ".mp4 ")
+    os.chdir(path)
+    os.system("rename " + name[0] + " " + total_name + ".mp4 ")
     os.system("move " + total_name + ".mp4 ../" + total_name + ".mp4")
 
-    #  TODO: something wrong
-    os.system("cd ../")
+    os.chdir(save_path)
     os.system("rd /s /q " + total_name)
 
 

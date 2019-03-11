@@ -5,7 +5,9 @@
 ## 本程序会根据m3u8格式下载视频文件，并自动合并。
 
 
+- 安装本包
 
+    >pip install m3u8_video_downloader
 
 - 想要使用这个，您需要在您想要保存视频的本地文件夹下，创建一个"readme.txt"文档。
 
@@ -24,12 +26,7 @@
     
     http://example2.m3u8
     
--  之后,进入本python文件的根目录下，用命令行运行下面的命令。
+-  之后,在你想保存视频的文件夹下执行cmd 操作：
     
-    根目录就是“main.py"所在目录。
-    
-    路径是自己定义的。
-
-
-    python main.py download --path="G:\video_save_path"
+    >m3u8_video_downloader
 

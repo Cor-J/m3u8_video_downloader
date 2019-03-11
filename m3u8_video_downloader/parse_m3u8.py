@@ -16,7 +16,7 @@ def find_prefix_path(m3u8_path):
 def parse_m3u8_file(m3u8_path):
     m3u8_file = file_downloader(m3u8_path)
     if "#EXTM3U" not in m3u8_file:
-        raise BaseException("非M3U8的链接")
+        raise BaseException("It is not a standard m3u8 file.")
     prefix_path = find_prefix_path(m3u8_path)
     video_list = []
     lines = m3u8_file.split()
