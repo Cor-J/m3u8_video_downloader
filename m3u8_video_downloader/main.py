@@ -5,8 +5,13 @@
 # license that can be found in the LICENSE file.
 
 import fire
-from m3u8_parse import parse_m3u8_file
-from file_downloader import ts_download
+from m3u8_video_downloader.parse_m3u8 import parse_m3u8_file
+from m3u8_video_downloader.file_downloader import ts_download
+
+
+def download_from_m3u8(name, m3u8_url, save_path):
+    url = parse_m3u8_file(m3u8_url)
+    ts_download(url, name, save_path)
 
 
 def download(path):
@@ -20,8 +25,7 @@ def download(path):
             elif flag:
                 if "m3u8" in line:
                     url = line.replace("\n", "")
-                    url = parse_m3u8_file(url)
-                    ts_download(url, name, path)
+                    download_from_m3u8(name, url, path)
                 else:
                     name = line.replace("\n", "")
             line = f.readline()

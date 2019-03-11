@@ -4,7 +4,7 @@
 # Use of this source code is governed by a MIT License
 # license that can be found in the LICENSE file.
 
-from file_downloader import file_downloader
+from m3u8_video_downloader.file_downloader import file_downloader
 
 
 def find_prefix_path(m3u8_path):

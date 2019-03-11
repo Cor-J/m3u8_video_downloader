@@ -5,7 +5,6 @@
 # license that can be found in the LICENSE file.
 
 import os
-import time
 import requests
 
 
@@ -39,7 +38,7 @@ def ts_download(video_list, total_name, save_path):
     os.system("ren " + name[0] + " " + total_name + ".mp4 ")
     os.system("move " + total_name + ".mp4 ../" + total_name + ".mp4")
 
-    #  TODO: something wroong
+    #  TODO: something wrong
     os.system("cd ../")
     os.system("rd /s /q " + total_name)
 
