@@ -5,9 +5,17 @@
 # license that can be found in the LICENSE file.
 
 import os
+import sys
 import requests
-import progressbar
 from multiprocessing import Pool, cpu_count
+
+
+def view_bar(num, total):
+    rate_num = int(num / total * 60)
+    r = '\r[%s%s]' % ("#" * rate_num, " " * (60 - rate_num))
+    sys.stdout.write(r)
+    sys.stdout.write(str(rate_num / 3 * 5) + '%')
+    sys.stdout.flush()
 
 
 def file_downloader(url, save_path=None):
@@ -21,10 +29,12 @@ def file_downloader(url, save_path=None):
         return resource.content.decode(encoding="utf-8", errors="strict")
 
 
-def download_one_file(prefix_path, file, path):
+def download_one_file(prefix_path, file, path, count, len_video):
     file_url = "/".join([prefix_path, file])
     name = path + "/" + file
     file_downloader(file_url, name)
+    if count % 30 == 0:
+        view_bar(count, len_video)
 
 
 def ts_download(prefix_path, video_list, total_name, save_path, n_job):
@@ -40,16 +50,13 @@ def ts_download(prefix_path, video_list, total_name, save_path, n_job):
     elif n_job < 1:
         cpu_number = int(n_job * cpu_count())
     pool = Pool(cpu_number)
-
-    pbar = progressbar.ProgressBar(maxval=len(video_list), widgets=[progressbar.Bar('=', '[', ']'), ' ',
-                                                        progressbar.Percentage()])
-    pbar.start()
+    len_video = len(video_list)
     for file in video_list:
-        pbar.update()
-        pool.apply_async(download_one_file, (prefix_path, file, path))
+        pool.apply_async(download_one_file, (prefix_path, file, path, count, len_video))
+        count += 1
+
     pool.close()
     pool.join()
-    pbar.finish()
 
     print("{} is merging...".format(total_name).center(60, "-"))
     name = merge(video_list, path)

@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='m3u8_video_downloader',
-    version=1.3,
+    version=1.4,
     description=(
         'Download video from m3u8 url'
     ),
@@ -39,6 +39,5 @@ setup(
     python_requires='>=3',
     install_requires=[
         'requests',
-        'progressbar'
     ],
 )
