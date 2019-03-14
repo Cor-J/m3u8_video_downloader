@@ -41,7 +41,7 @@ def main():
     You can use this for downloading video files by m3u8 links.
     Two example of order is given as follow:
         m3u8-video-downloader -n <your file name> - u <m3u8 url> -p <save path> -c<cpu number>
-        m3u8_video_downloader -n <name> - u <http://example1.m3u8> -p <G://example_path> -c<3>
+        m3u8_video_downloader -n <name> -u <http://example1.m3u8> -p <G://example_path> -c<3>
 
     If no saved path is given, the path where you are using the cmd is regarded as the default path.
 
